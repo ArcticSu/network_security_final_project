@@ -23,3 +23,5 @@ This project explores website fingerprinting attacks on Tor traffic using variou
 | `model_gru.py`       | GRU-based variant (simplified recurrent architecture) |
 | `model_svm.py`       | Flattened statistical feature classifier using Support Vector Machine |
 | `model_trans.py`     | **Transformer-based classifier (best performance)** for sequence modeling |
+| `model_trans_eachweb.py`| Each web got their classification seprately |
+| `model_trans_allwebpage.py`| All 15 pages train together |
