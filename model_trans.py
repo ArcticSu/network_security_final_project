@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, TensorDataset, random_split
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from dataloader import load_dataset
+from dataloader import load_dataset,load_dataset_homepage
 import torch.nn.functional as F
 from torch.nn import TransformerEncoder, TransformerEncoderLayer
 
@@ -63,7 +63,8 @@ def train_model(model, train_loader, test_loader, device, epochs=10, lr=1e-3):
     return np.array(all_preds), np.array(all_labels)
 
 def main():
-    X, Y, encoder = load_dataset("processed_file", window_size=300, stride=50)
+    # X, Y, encoder = load_dataset("processed_file", window_size=300, stride=50)
+    X, Y, encoder = load_dataset_homepage("processed_file", window_size=300, stride=50)
     X = X.astype(np.float32)
     Y = Y.astype(np.int64)
 
@@ -81,14 +82,6 @@ def main():
     print("Classification Report:")
     print(classification_report(true, preds, target_names=encoder.classes_))
 
-    # cm = confusion_matrix(true, preds)
-    # plt.figure(figsize=(6, 5))
-    # sns.heatmap(cm, annot=True, fmt="d", xticklabels=encoder.classes_, yticklabels=encoder.classes_, cmap="Blues")
-    # plt.title("LSTM Confusion Matrix")
-    # plt.xlabel("Predicted")
-    # plt.ylabel("True")
-    # plt.tight_layout()
-    # plt.show()
 
 if __name__ == "__main__":
     main()
